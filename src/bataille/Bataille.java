@@ -18,7 +18,11 @@ public class Bataille {
 		String namePlayer2 = user_input.next( );
 		Joueur j2 = new Joueur(namePlayer2);
 		
+		System.out.println("Veuillez rentrer un délai entre chaque itération (ms) :");
+		int delay = user_input.nextInt();
+		
 		user_input.close();
+		
 		System.out.println("Bataille de " + j1.getName() + " vs. " + j2.getName() + "\n");
 		
 		Deck deck = new Deck();
@@ -37,17 +41,15 @@ public class Bataille {
         	} else if (result == 2) {
         		manageWinLosePlayersDeck(j2, j1, j1Card, j2Card);
         	} else {
-        		System.out.println("équal");
-        		
         		int winner = 0;
         		ArrayList<Carte> keptCards = new ArrayList<Carte>();
         		
         		while (winner == 0) {
         			if (j1.getPlayerDeck().size() <= 1) {
-            			System.out.println(j1.getName() + " a perdu");
+            			//System.out.println(j1.getName() + " a perdu");
             			break;
             		} else if (j2.getPlayerDeck().size() <= 1) {
-            			System.out.println(j2.getName() + " a perdu");
+            			//System.out.println(j2.getName() + " a perdu");
             			break;
             		} else {
             			keptCards = manageEqualPlayersDeck(j1, j2, j1Card, j2Card);
@@ -68,7 +70,7 @@ public class Bataille {
         	System.out.println(iteration + " iterations       " + j1.getName() + " " + j1.getPlayerDeck().size() + "  vs  " + j2.getPlayerDeck().size() + " " + j2.getName());
         	
         	try{
-    		  Thread.sleep(10);
+    		  Thread.sleep(delay);
     		} catch(InterruptedException ex){
     		  break;
     		}
