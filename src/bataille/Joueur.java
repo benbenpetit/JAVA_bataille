@@ -3,33 +3,22 @@ import java.util.ArrayList;
 
 public class Joueur {
 	private ArrayList<Carte> playerDeck = new ArrayList<Carte>();
-	private String name;
-	private int score;
+	private String name;	
 	
-	
-	public Joueur(String name, int score) {
+	public Joueur(String name) {
 		this.name = name;
-		this.score = score;
 	}
 	
 	public String getName()  {
 		return this.name;
 	}
 	
-	public int getScore() {
-		return this.score;
-	}
-	
-	public void incrementScore() {
-		this.score++;
-	}
-	
-	public void decrementScore() {
-		this.score--;
-	}
-	
 	public void addCard(Carte card) {
 		this.playerDeck.add(card);
+	}
+	
+	public void addCards(ArrayList<Carte> cards) {
+		this.playerDeck.addAll(cards);
 	}
 	
 	public void removeTopCard() {
